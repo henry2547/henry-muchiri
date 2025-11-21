@@ -6,40 +6,64 @@ import { ExternalLink, Github } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Backend API",
-      description: "RESTful API for a full-featured e-commerce platform with authentication, payment processing, and order management.",
-      technologies: ["Node.js", "Express", "PostgreSQL", "Stripe"],
+      title: "Stalker",
+      description: "A platform to access publicly available profile information from various social media platforms. Prioritizes user privacy and ethical data practices by only retrieving openly accessible information.",
+      technologies: ["Web Scraping", "Privacy-First", "API Integration"],
+      category: "Web Tools",
+      link: "https://stalker-sable.vercel.app/",
+      github: "https://github.com/henry2547",
+    },
+    {
+      title: "Save As - Website Source Downloader",
+      description: "Powerful tool that retrieves complete website source code including HTML, CSS, JavaScript, images, and assets. Downloads everything into a convenient ZIP file while preserving the original file hierarchy.",
+      technologies: ["JavaScript", "Web Scraping", "File Processing"],
+      category: "Web Tools",
+      link: "https://save-as.vercel.app/",
+      github: "https://github.com/henry2547",
+    },
+    {
+      title: "KGU Kenya - Golf Management Platform",
+      description: "Comprehensive golf management system connecting golfers, tournament administrators, and financial managers. Simplifies tournament registrations, enhances skill development, and fosters community engagement.",
+      technologies: ["PHP", "MySQL", "Web Development"],
+      category: "Full-Stack",
+      link: "https://github.com/henry2547/kgu",
+      github: "https://github.com/henry2547/kgu",
+    },
+    {
+      title: "M-Pesa Payment Gateway Integration",
+      description: "Complete, secure PHP and JavaScript solution for processing M-Pesa payments in web applications. Users can make seamless payments by simply entering their phone number.",
+      technologies: ["PHP", "JavaScript", "M-Pesa API", "Payment Integration"],
       category: "Backend",
-      link: "#",
-      github: "https://github.com/henry2547",
+      link: "https://github.com/henry2547/mpesa-payment",
+      github: "https://github.com/henry2547/mpesa-payment",
     },
     {
-      title: "Cloud Deployment Automation",
-      description: "CI/CD pipeline setup for automated deployment to AWS using Docker containers and GitHub Actions.",
-      technologies: ["AWS", "Docker", "GitHub Actions", "Terraform"],
-      category: "DevOps",
-      link: "#",
-      github: "https://github.com/henry2547",
+      title: "Data Cleaning Tool",
+      description: "Python tool that cleans Excel files by removing rows where pairs of values sum to zero. Processes all sheets in a workbook while maintaining data integrity.",
+      technologies: ["Python", "Excel", "Data Processing", "Pandas"],
+      category: "Data Tools",
+      link: "https://github.com/henry2547/DataCleaning",
+      github: "https://github.com/henry2547/DataCleaning",
     },
     {
-      title: "Task Management API",
-      description: "A robust task management system with role-based access control and real-time updates.",
-      technologies: ["Python", "FastAPI", "MongoDB", "WebSocket"],
+      title: "Bank Console - Java Banking System",
+      description: "Secure console-based banking application built with Java and MySQL. Provides fast, secure account management through a text-based interface, ideal for low-resource environments.",
+      technologies: ["Java", "MySQL", "Console Application"],
       category: "Backend",
-      link: "#",
-      github: "https://github.com/henry2547",
+      link: "https://github.com/henry2547/BankManagementSystem",
+      github: "https://github.com/henry2547/BankManagementSystem",
     },
     {
-      title: "Open-Source Contribution",
-      description: "Active contributor to various open-source projects, focusing on backend improvements and bug fixes.",
-      technologies: ["Various", "Open-Source", "Community"],
-      category: "Open-Source",
-      link: "https://github.com/henry2547/henry_njue",
-      github: "https://github.com/henry2547/henry_njue",
+      title: "Khalif Spices Limited - E-Commerce Platform",
+      description: "Specialized e-commerce platform for authentic spices. Provides a seamless digital marketplace for spice enthusiasts, chefs, and home cooks to explore and purchase premium quality spices.",
+      technologies: ["E-Commerce", "Web Development", "PHP"],
+      category: "Full-Stack",
+      link: "https://github.com/henry2547/khalif",
+      github: "https://github.com/henry2547/khalif",
     },
   ];
 
-  const categories = ["All", "Backend", "DevOps", "Open-Source"];
+  const categories = ["All", "Full-Stack", "Backend", "Web Tools", "Data Tools"];
 
   return (
     <div className="min-h-screen py-20">
