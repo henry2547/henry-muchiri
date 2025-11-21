@@ -9,22 +9,22 @@ const Home = () => {
     {
       icon: Code2,
       title: "Backend Development",
-      description: "Building robust server-side applications",
-    },
-    {
-      icon: Cloud,
-      title: "Cloud Technologies",
-      description: "Deploying scalable cloud solutions",
+      description: "Laravel, PHP, and API Development",
     },
     {
       icon: Database,
       title: "Database Design",
-      description: "Efficient data architecture",
+      description: "MySQL and PostgreSQL expertise",
     },
     {
       icon: GitBranch,
-      title: "Open-Source",
-      description: "Contributing to community projects",
+      title: "Mobile Development",
+      description: "Building Android apps with Kotlin & Java",
+    },
+    {
+      icon: Cloud,
+      title: "Learning Frontend",
+      description: "Expanding skills in React.js & Next.js",
     },
   ];
 
@@ -57,7 +57,7 @@ const Home = () => {
             </h1>
             
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Junior Software Developer | Tech Enthusiast | Problem Solver
+              Software Engineer | Mathematics & Computer Science Enthusiast | Problem Solver
             </p>
             
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto italic">
@@ -82,7 +82,7 @@ const Home = () => {
               </span>
               <span>•</span>
               <span className="flex items-center gap-2">
-                🌱 Growing in Tech
+                🌱 Learning React & Next.js
               </span>
             </div>
           </div>
