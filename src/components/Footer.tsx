@@ -32,7 +32,7 @@ export const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-foreground">Henry Muchiri</h3>
             <p className="text-muted-foreground text-sm">
-              Junior Software Developer crafting elegant solutions with clean code and creative thinking.
+              Software Engineer crafting elegant solutions with clean code and creative thinking.
             </p>
           </div>
 
