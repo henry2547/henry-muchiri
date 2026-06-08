@@ -8,8 +8,8 @@ const Home = () => {
   const skills = [
     {
       icon: Code2,
-      title: "Backend Development",
-      description: "Laravel, PHP, and API Development",
+      title: "Full-Stack Development",
+      description: "Laravel, Node.js, React, Next.js & PHP",
     },
     {
       icon: Database,
@@ -18,13 +18,13 @@ const Home = () => {
     },
     {
       icon: GitBranch,
-      title: "Mobile Development",
-      description: "Building Android apps with Kotlin & Java",
+      title: "IT Support & Systems",
+      description: "Networking, sysadmin & technical support",
     },
     {
       icon: Cloud,
-      title: "Learning Frontend",
-      description: "Expanding skills in React.js & Next.js",
+      title: "Currently Learning",
+      description: "Cloud infrastructure & scalable APIs",
     },
   ];
 
@@ -57,7 +57,7 @@ const Home = () => {
             </h1>
             
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Software Engineer | Mathematics & Computer Science Enthusiast | Problem Solver
+              Software Engineer | IT Support Specialist | Mathematics & Computer Science Graduate
             </p>
             
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto italic">
