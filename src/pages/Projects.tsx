@@ -19,11 +19,19 @@ interface GitHubRepo {
 }
 
 const fetchGitHubRepos = async (): Promise<GitHubRepo[]> => {
-  const response = await fetch("https://api.github.com/users/henry2547/repos?sort=updated&per_page=100");
-  if (!response.ok) {
-    throw new Error("Failed to fetch repositories");
+  const all: GitHubRepo[] = [];
+  let page = 1;
+  while (true) {
+    const res = await fetch(
+      `https://api.github.com/users/henry2547/repos?type=public&sort=updated&per_page=100&page=${page}`
+    );
+    if (!res.ok) throw new Error("Failed to fetch repositories");
+    const batch: GitHubRepo[] = await res.json();
+    all.push(...batch);
+    if (batch.length < 100) break;
+    page++;
   }
-  return response.json();
+  return all;
 };
 
 const categorizeTech = (language: string | null, topics: string[]): string => {
