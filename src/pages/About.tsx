@@ -1,57 +1,102 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Code2, Lightbulb, Target, Users, FileText, Gamepad2, Film, Dumbbell } from "lucide-react";
+import {
+  Code2,
+  Lightbulb,
+  Target,
+  Users,
+  FileText,
+  Gamepad2,
+  Film,
+  Plane,
+  Download,
+} from "lucide-react";
+import cvAsset from "@/assets/cv.pdf.asset.json";
 
 const About = () => {
   const highlights = [
     {
       icon: Code2,
-      title: "Clean Code Advocate",
-      description: "I believe in writing maintainable, readable, and efficient code that stands the test of time.",
+      title: "Full-Stack Developer",
+      description:
+        "Experience building scalable web applications and enterprise solutions end-to-end.",
     },
     {
       icon: Lightbulb,
-      title: "Creative Problem Solver",
-      description: "Every challenge is an opportunity to innovate and find elegant solutions.",
+      title: "IT Support Specialist",
+      description:
+        "Skilled in systems administration, networking, and end-user technical support.",
     },
     {
       icon: Target,
-      title: "Goal-Oriented",
-      description: "Focused on continuous learning and achieving measurable results in every project.",
+      title: "Analytical Thinker",
+      description:
+        "Mathematics & Computer Science background applied to clean, efficient problem-solving.",
     },
     {
       icon: Users,
-      title: "Collaborative Spirit",
-      description: "Strong believer in teamwork, open-source contribution, and knowledge sharing.",
+      title: "Agile Collaborator",
+      description:
+        "Advocate of Agile development, clean code practices, and continuous learning.",
     },
   ];
 
   const techStack = {
-    "Backend": ["Laravel", "PHP", "API Development"],
-    "Frontend": ["HTML", "CSS", "JavaScript"],
-    "Mobile": ["Kotlin", "Java", "Android Development"],
-    "Databases": ["MySQL", "PostgreSQL"],
-    "Currently Learning": ["React.js", "Next.js", "TypeScript"],
-    "Tools & DevOps": ["Git", "Docker", "GitHub Actions"],
+    "Programming Languages": [
+      "Java",
+      "Kotlin",
+      "PHP",
+      "JavaScript",
+      "Python",
+      "C++",
+      "HTML5",
+      "CSS3",
+    ],
+    "Frameworks & Technologies": ["Laravel", "Node.js", "React.js", "Next.js"],
+    Databases: ["MySQL", "PostgreSQL"],
+    "IT Support & Systems": [
+      "Hardware & Software Troubleshooting",
+      "LAN/WAN Networking",
+      "System Administration",
+      "Identity & Access Management",
+      "ITSM",
+      "Technical Documentation",
+    ],
+    "Development Tools": ["Git & GitHub", "VS Code", "Postman", "Linux", "REST APIs"],
+    "Currently Learning": [
+      "Advanced Backend Architecture",
+      "Scalable API Design",
+      "Cloud Infrastructure",
+      "Design Patterns",
+    ],
   };
 
   const interests = [
     {
       icon: Film,
       title: "Movies",
-      description: "Sci-fi, thrillers, and thought-provoking documentaries",
+      description: "Sci-fi and thriller films that spark imagination",
+    },
+    {
+      icon: Plane,
+      title: "Traveling",
+      description: "Exploring new places, cultures, and cuisines",
     },
     {
       icon: Gamepad2,
-      title: "Gaming",
-      description: "Strategy, RPGs, and competitive multiplayer games",
+      title: "eFootball",
+      description: "Competitive matches and unwinding with friends",
     },
-    {
-      icon: Dumbbell,
-      title: "Fitness",
-      description: "Basketball, hiking, and staying active",
-    },
+  ];
+
+  const careerInterests = [
+    "Full-Stack Software Development",
+    "Backend Engineering",
+    "IT Support & Systems Administration",
+    "Enterprise Application Development",
+    "Technical Support Engineering",
+    "DevOps & Cloud Technologies",
   ];
 
   return (
@@ -66,33 +111,33 @@ const About = () => {
             </span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A passionate junior developer from Kenya, dedicated to crafting digital solutions
-            that make a difference.
+            Software Engineer · IT Support Specialist · Mathematics & Computer Science Graduate
           </p>
         </div>
 
         {/* Introduction */}
         <Card className="p-8 sm:p-12 mb-12 bg-card border-border animate-fade-in-up">
-          <div className="prose prose-invert max-w-none">
-            <h2 className="text-2xl font-bold mb-4 text-foreground">My Journey</h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              👋 Hello! I'm a passionate and detail-oriented Junior Software Engineer with a strong 
-              foundation in Computer Science and Mathematics, based in Kirinyaga County, Kenya. 
-              I'm dedicated to crafting elegant, scalable, and high-performance solutions. My journey 
-              in technology is driven by curiosity, problem-solving, and a relentless pursuit of knowledge.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              I specialize in full-stack development with expertise in backend technologies like Laravel 
-              and PHP, mobile development using Kotlin and Java, and I'm currently expanding my skills 
-              in modern JavaScript frameworks like React.js and Next.js. I believe in writing clean, 
-              maintainable code that focuses on performance and scalability.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              With strong analytical skills honed through problem-solving and mathematical modeling, 
-              I break down complex challenges into efficient solutions. I'm a firm believer in teamwork, 
-              open-source contributions, and knowledge-sharing to create impactful, user-centric software.
-            </p>
-          </div>
+          <h2 className="text-2xl font-bold mb-4 text-foreground">My Journey</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            👋 Hi, I'm Henry Muchiri — a passionate Software Engineer and IT Support
+            Specialist with over two years of hands-on experience developing scalable web
+            applications, maintaining IT infrastructure, and delivering technical support
+            solutions. My background in Mathematics and Computer Science enables me to
+            approach problems analytically while building practical, user-focused systems.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            I enjoy creating efficient software, optimizing business processes through
+            automation, and solving technical challenges across both software development
+            and IT operations.
+          </p>
+          <ul className="space-y-2 text-muted-foreground">
+            <li>🚀 Full-Stack Developer building web applications and enterprise solutions.</li>
+            <li>🎓 B.Sc. in Mathematics & Computer Science (Software Engineering Specialization).</li>
+            <li>🛠️ Skilled in IT support, systems administration, and network troubleshooting.</li>
+            <li>💡 Passionate about backend architecture, API integrations, and scalable systems.</li>
+            <li>📈 Strong advocate of Agile, clean code, and continuous learning.</li>
+            <li>🎮 Outside tech: sci-fi & thriller movies, traveling, and eFootball.</li>
+          </ul>
         </Card>
 
         {/* Highlights */}
@@ -115,7 +160,7 @@ const About = () => {
 
         {/* Tech Stack */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Tech Stack & Skills</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Technical Skills</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {Object.entries(techStack).map(([category, technologies], index) => (
               <Card
@@ -140,22 +185,17 @@ const About = () => {
           </div>
         </div>
 
-        {/* Core Competencies */}
+        {/* Career Interests */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Core Competencies</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Career Interests</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              "Software Architecture & Design Patterns",
-              "API Development & Integration",
-              "Performance Optimization & Debugging",
-              "Agile & Scrum Methodologies",
-            ].map((competency, index) => (
+            {careerInterests.map((interest, index) => (
               <Card
                 key={index}
-                className="p-4 bg-card border-border animate-fade-in-up text-center"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="p-4 bg-card border-border animate-fade-in-up"
+                style={{ animationDelay: `${index * 80}ms` }}
               >
-                <p className="text-muted-foreground">✔ {competency}</p>
+                <p className="text-muted-foreground">✔ {interest}</p>
               </Card>
             ))}
           </div>
@@ -164,9 +204,6 @@ const About = () => {
         {/* Beyond Coding */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Beyond Coding</h2>
-          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-            When I'm not immersed in code, you can find me:
-          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {interests.map((interest, index) => (
               <Card
@@ -182,55 +219,27 @@ const About = () => {
           </div>
         </div>
 
-        {/* Current Focus */}
-        <Card className="p-8 sm:p-12 bg-gradient-to-br from-primary/10 to-blue-500/10 border-primary/20 animate-fade-in mb-16">
-          <h2 className="text-2xl font-bold mb-4 text-center">Current Focus</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div>
-              <div className="text-3xl mb-2">🚀</div>
-              <h3 className="font-semibold mb-2">Advanced Backend</h3>
-              <p className="text-sm text-muted-foreground">
-                Exploring high-concurrency systems and event-driven architectures
-              </p>
-            </div>
-            <div>
-              <div className="text-3xl mb-2">⚛️</div>
-              <h3 className="font-semibold mb-2">Modern Frontend</h3>
-              <p className="text-sm text-muted-foreground">
-                Learning React.js and Next.js for modern web applications
-              </p>
-            </div>
-            <div>
-              <div className="text-3xl mb-2">🌟</div>
-              <h3 className="font-semibold mb-2">Open-Source</h3>
-              <p className="text-sm text-muted-foreground">
-                Building and contributing to projects that solve real-world problems
-              </p>
-            </div>
-          </div>
-        </Card>
-
-        {/* Resume/CV Section */}
+        {/* CV Section */}
         <Card className="p-8 sm:p-12 bg-card border-border text-center animate-fade-in">
           <FileText className="w-16 h-16 text-primary mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-4">Resume/CV Access</h2>
+          <h2 className="text-2xl font-bold mb-4">My CV / Resume</h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            View my full professional profile with detailed experience, education, and achievements.
+            View or download my full CV for detailed experience, education, and projects.
           </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-            <a
-              href="https://drive.google.com/file/d/1Yh22Tq5ThOA66q9cH_wZ7IKvnGyX8usF/view?usp=drivesdk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
-            >
-              <FileText className="w-4 h-4" />
-              Download Resume
-            </a>
-          </Button>
-          <p className="text-xs text-muted-foreground mt-4">
-            ⚠️ Security Note: This is my personal document - please do not redistribute without permission.
-          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
+              <a href={cvAsset.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                <FileText className="w-4 h-4" />
+                View CV
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <a href={cvAsset.url} download="Henry-Njue-Muchiri-CV.pdf" className="flex items-center gap-2">
+                <Download className="w-4 h-4" />
+                Download CV
+              </a>
+            </Button>
+          </div>
         </Card>
       </div>
     </div>
