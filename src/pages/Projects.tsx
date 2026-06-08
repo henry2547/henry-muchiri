@@ -18,19 +18,47 @@ interface GitHubRepo {
   updated_at: string;
 }
 
+const CACHE_KEY = "gh-repos-henry2547";
+const CACHE_TTL = 1000 * 60 * 60 * 6; // 6 hours
+
 const fetchGitHubRepos = async (): Promise<GitHubRepo[]> => {
+  // Try cache first
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      const { ts, data } = JSON.parse(cached);
+      if (Date.now() - ts < CACHE_TTL && Array.isArray(data) && data.length > 0) {
+        return data;
+      }
+    }
+  } catch {}
+
   const all: GitHubRepo[] = [];
   let page = 1;
   while (true) {
     const res = await fetch(
       `https://api.github.com/users/henry2547/repos?type=public&sort=updated&per_page=100&page=${page}`
     );
-    if (!res.ok) throw new Error("Failed to fetch repositories");
+    if (!res.ok) {
+      // On rate-limit, fall back to stale cache if we have it
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        try {
+          const { data } = JSON.parse(cached);
+          if (Array.isArray(data) && data.length > 0) return data;
+        } catch {}
+      }
+      throw new Error("Failed to fetch repositories");
+    }
     const batch: GitHubRepo[] = await res.json();
     all.push(...batch);
     if (batch.length < 100) break;
     page++;
   }
+
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: all }));
+  } catch {}
   return all;
 };
 
