@@ -38,15 +38,71 @@ const categorizeTech = (language: string | null, topics: string[]): string => {
   return "Other";
 };
 
+const FEATURED_PROJECTS = [
+  {
+    title: "Kenya Golf Union Management System",
+    description:
+      "Comprehensive platform for managing golf tournaments, events, memberships, and administrative operations.",
+    technologies: ["PHP", "JavaScript", "MySQL", "HTML", "CSS"],
+    category: "Full-Stack",
+    link: "https://github.com/henry2547/kgu",
+    github: "https://github.com/henry2547/kgu",
+    stars: 0,
+  },
+  {
+    title: "Stalker Website",
+    description:
+      "Web application providing anonymous social media profile viewing through external API integrations.",
+    technologies: ["Next.js", "JavaScript", "APIs"],
+    category: "Frontend",
+    link: "https://stalker-sable.vercel.app/",
+    github: "https://github.com/henry2547",
+    stars: 0,
+  },
+  {
+    title: "Bank Management System",
+    description:
+      "Console-based banking application simulating core banking operations and account management workflows.",
+    technologies: ["Java", "MySQL"],
+    category: "Backend",
+    link: "https://github.com/henry2547/BankManagementSystem",
+    github: "https://github.com/henry2547/BankManagementSystem",
+    stars: 0,
+  },
+  {
+    title: "Khalif Spices E-Commerce",
+    description:
+      "Online platform for product management, order processing, and customer interactions with multi-user roles.",
+    technologies: ["PHP", "JavaScript", "MySQL", "HTML", "CSS"],
+    category: "Full-Stack",
+    link: "https://github.com/henry2547/khalif",
+    github: "https://github.com/henry2547/khalif",
+    stars: 0,
+  },
+  {
+    title: "Invoice Automation Tool (KenGen Module)",
+    description:
+      "Financial automation solution streamlining invoice processing and reducing manual administrative tasks.",
+    technologies: ["PHP", "MySQL"],
+    category: "Backend",
+    link: "https://github.com/henry2547",
+    github: "https://github.com/henry2547",
+    stars: 0,
+  },
+];
+
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  
+
   const { data: repos, isLoading, error } = useQuery({
     queryKey: ["github-repos"],
     queryFn: fetchGitHubRepos,
+    retry: 1,
+    staleTime: 1000 * 60 * 30, // 30 min
+    gcTime: 1000 * 60 * 60,
   });
 
-  const projects = repos?.map(repo => ({
+  const liveProjects = repos?.map(repo => ({
     title: repo.name.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "),
     description: repo.description || "No description available",
     technologies: repo.topics.length > 0 ? repo.topics : [repo.language || "Code"],
@@ -56,8 +112,12 @@ const Projects = () => {
     stars: repo.stargazers_count,
   })) || [];
 
-  const filteredProjects = selectedCategory === "All" 
-    ? projects 
+  // Fall back to featured list when API errors or returns nothing
+  const projects = error || liveProjects.length === 0 ? FEATURED_PROJECTS : liveProjects;
+  const usingFallback = !!error || (!isLoading && liveProjects.length === 0);
+
+  const filteredProjects = selectedCategory === "All"
+    ? projects
     : projects.filter(p => p.category === selectedCategory);
 
   const categories = ["All", ...Array.from(new Set(projects.map(p => p.category)))];
@@ -110,19 +170,16 @@ const Projects = () => {
           </div>
         )}
 
-        {/* Error State */}
-        {error && (
-          <Card className="p-8 bg-destructive/10 border-destructive/20 text-center mb-12">
-            <AlertCircle className="w-12 h-12 text-destructive mx-auto mb-4" />
-            <h3 className="text-xl font-bold mb-2">Failed to Load Projects</h3>
-            <p className="text-muted-foreground">
-              Unable to fetch repositories from GitHub. Please try again later.
-            </p>
+        {/* Fallback notice */}
+        {!isLoading && usingFallback && (
+          <Card className="p-4 mb-8 bg-primary/5 border-primary/20 text-center text-sm text-muted-foreground">
+            <AlertCircle className="w-4 h-4 inline mr-2 text-primary" />
+            Showing featured projects. Live GitHub feed is temporarily unavailable (rate limited) — try again later.
           </Card>
         )}
 
         {/* Projects Grid */}
-        {!isLoading && !error && (
+        {!isLoading && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {filteredProjects.map((project, index) => (
             <Card
