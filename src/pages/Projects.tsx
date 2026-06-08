@@ -170,19 +170,16 @@ const Projects = () => {
           </div>
         )}
 
-        {/* Error State */}
-        {error && (
-          <Card className="p-8 bg-destructive/10 border-destructive/20 text-center mb-12">
-            <AlertCircle className="w-12 h-12 text-destructive mx-auto mb-4" />
-            <h3 className="text-xl font-bold mb-2">Failed to Load Projects</h3>
-            <p className="text-muted-foreground">
-              Unable to fetch repositories from GitHub. Please try again later.
-            </p>
+        {/* Fallback notice */}
+        {!isLoading && usingFallback && (
+          <Card className="p-4 mb-8 bg-primary/5 border-primary/20 text-center text-sm text-muted-foreground">
+            <AlertCircle className="w-4 h-4 inline mr-2 text-primary" />
+            Showing featured projects. Live GitHub feed is temporarily unavailable (rate limited) — try again later.
           </Card>
         )}
 
         {/* Projects Grid */}
-        {!isLoading && !error && (
+        {!isLoading && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {filteredProjects.map((project, index) => (
             <Card
