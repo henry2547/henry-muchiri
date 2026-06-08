@@ -38,15 +38,71 @@ const categorizeTech = (language: string | null, topics: string[]): string => {
   return "Other";
 };
 
+const FEATURED_PROJECTS = [
+  {
+    title: "Kenya Golf Union Management System",
+    description:
+      "Comprehensive platform for managing golf tournaments, events, memberships, and administrative operations.",
+    technologies: ["PHP", "JavaScript", "MySQL", "HTML", "CSS"],
+    category: "Full-Stack",
+    link: "https://github.com/henry2547/kgu",
+    github: "https://github.com/henry2547/kgu",
+    stars: 0,
+  },
+  {
+    title: "Stalker Website",
+    description:
+      "Web application providing anonymous social media profile viewing through external API integrations.",
+    technologies: ["Next.js", "JavaScript", "APIs"],
+    category: "Frontend",
+    link: "https://stalker-sable.vercel.app/",
+    github: "https://github.com/henry2547",
+    stars: 0,
+  },
+  {
+    title: "Bank Management System",
+    description:
+      "Console-based banking application simulating core banking operations and account management workflows.",
+    technologies: ["Java", "MySQL"],
+    category: "Backend",
+    link: "https://github.com/henry2547/BankManagementSystem",
+    github: "https://github.com/henry2547/BankManagementSystem",
+    stars: 0,
+  },
+  {
+    title: "Khalif Spices E-Commerce",
+    description:
+      "Online platform for product management, order processing, and customer interactions with multi-user roles.",
+    technologies: ["PHP", "JavaScript", "MySQL", "HTML", "CSS"],
+    category: "Full-Stack",
+    link: "https://github.com/henry2547/khalif",
+    github: "https://github.com/henry2547/khalif",
+    stars: 0,
+  },
+  {
+    title: "Invoice Automation Tool (KenGen Module)",
+    description:
+      "Financial automation solution streamlining invoice processing and reducing manual administrative tasks.",
+    technologies: ["PHP", "MySQL"],
+    category: "Backend",
+    link: "https://github.com/henry2547",
+    github: "https://github.com/henry2547",
+    stars: 0,
+  },
+];
+
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  
+
   const { data: repos, isLoading, error } = useQuery({
     queryKey: ["github-repos"],
     queryFn: fetchGitHubRepos,
+    retry: 1,
+    staleTime: 1000 * 60 * 30, // 30 min
+    gcTime: 1000 * 60 * 60,
   });
 
-  const projects = repos?.map(repo => ({
+  const liveProjects = repos?.map(repo => ({
     title: repo.name.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "),
     description: repo.description || "No description available",
     technologies: repo.topics.length > 0 ? repo.topics : [repo.language || "Code"],
@@ -56,8 +112,12 @@ const Projects = () => {
     stars: repo.stargazers_count,
   })) || [];
 
-  const filteredProjects = selectedCategory === "All" 
-    ? projects 
+  // Fall back to featured list when API errors or returns nothing
+  const projects = error || liveProjects.length === 0 ? FEATURED_PROJECTS : liveProjects;
+  const usingFallback = !!error || (!isLoading && liveProjects.length === 0);
+
+  const filteredProjects = selectedCategory === "All"
+    ? projects
     : projects.filter(p => p.category === selectedCategory);
 
   const categories = ["All", ...Array.from(new Set(projects.map(p => p.category)))];
